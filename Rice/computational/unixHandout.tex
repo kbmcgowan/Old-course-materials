@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+\usepackage[nohead, hmargin=1 in, vmargin=1.25 in]{geometry}
+\usepackage{subfigure}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{tipa}
+
+\usepackage{graphicx}
+
+\bibliographystyle{apalike}
+
+\begin{document}
+
+\begin{center}
+{\large Basic UNIX Commands: Reference}
+\end{center}
+
+\section{clear.rice.edu: Rice Linux}
+\begin{enumerate}
+     \item Access instructions: \url{http://www.clear.rice.edu/}
+     \item ssh to ssh.clear.rice.edu with netid and password
+     \item e.g.: \texttt{ssh km21@ssh.clear.rice.edu}
+\end{enumerate}
+
+\section{Useful commands}
+
+\begin{tabular}{ll}
+wget url & simple web download tool \\
+ls &	list files and directories\\
+ls -a &	include (hidden) dot files and directories\\
+mkdir &	make a directory\\
+cd directory & change to named directory\\
+cd or cd \~{} & change to home-directory\\
+cd .. & change to parent directory\\
+pwd & display the path of the current directory\\
+cp file1 file2 &	copy file1 and call it file2\\
+mv file1 file2 &	move or rename file1 to file2\\
+rm file & remove a file\\
+rmdir directory & remove a directory\\
+cat file & display a file\\
+more file & display a file a page at a time\\
+head file & display the first few lines of a file \\
+tail file & display the last few lines of a file \\
+grep 'regex' file & search a file with regexp \\
+egrep 'regex'& grep with extended regexp features \\
+wc file & count number of lines/words/characters in file \\
+cat file1 file2 $>$ file0 & concatenate file1 and file2 to file0\\
+sort & sort data \\
+sort -n & sort data numerically\\
+uniq & omit repeated lines \\
+uniq -c & count and omit repeated lines \\
+command $>$ file & overwrite file with standard output\\
+command $>>$ file & append standard output to a file\\
+command $<$ file & redirect standard input from a file\\
+command1 $|$ command2 & pipe the output of command1 to the input of command2\\
+sed & stream editor: apply regexps to data \\
+history & show commands you have executed\\
+\end{tabular}
+
+\section{Some more complicated examples}
+
+\begin{verbatim}
+sed -e 's/\s\+/\n/g' file.txt > wordlist.txt % convert spaces to new lines
+\end{verbatim}
+
+\begin{verbatim}
+sed -e 's/\s\+/\n/g' file.txt | sort | uniq -c % count words in text
+\end{verbatim}
+
+\begin{verbatim}
+% count words in text and sort the results numerically
+sed -e 's/\s\+/\n/g' file.txt | sort | uniq -c | sort -n 
+\end{verbatim}
+
+\begin{verbatim}
+% count words in text, sort the results numerically, and save the result
+sed -e 's/\s\+/\n/g' file.txt | sort | uniq -c | sort -n > wordcounts.txt
+\end{verbatim}
+
+\noindent
+\textbf{Question 1:} What happens if you leave out that first \texttt{sort} command?  Try it and see!\\
+
+\noindent
+\textbf{Question 2:} Look at the output, how might we remove some of the non-word `words' from our counts?\\
+
+\section{Checking for Zipf's Law}
+
+\begin{tabular}{ll}
+man command & read the help documentation for the command \\
+head file &	view first N lines of file\\
+tail file &	view last N lines of file\\
+paste file1 file2 & combine file1 and file2 as columns \\
+nl & number lines of a text file (or stream)\\
+awk '{print \$2}' file & print column 2 of file\\
+nano & edit a text file (see also vi, emacs, pico, etc.)\\
+\end{tabular}
+
+\begin{verbatim}
+% sort the words in our text numerically in reverse, add line numbers
+% so words are ranked by frequency, extract only the ranking and frequency
+% columns, and save it all to a data file 
+sort -rn wordcounts.txt | nl | awk '{print $1, $2}' > ernest.dat
+\end{verbatim}
+
+\begin{verbatim}
+gnuplot> set out "file.png"
+gnuplot> set terminal png
+gnuplot> set xlabel "rank"
+gnuplot> set ylabel "frequency"
+gnuplot> plot "ernest.dat"
+\end{verbatim}
+\section{Language Knowledge}
+\noindent
+\textbf{Question 3:} How could we find (and maybe count) only the pronouns in this document?\\
+\textbf{Question 4:} Now how about the nouns?\\
+\textbf{Question 5:} What if we wanted to find only the plural nouns? Or progressive verbs?\\
+
+\end{document}
+

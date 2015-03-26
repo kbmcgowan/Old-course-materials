@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+\usepackage{tipa}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage[hmargin=1 in, margin=.75 in,nohead,nofoot]{geometry}
+
+\begin{document}
+\noindent
+\begin{tabularx}{\textwidth}{X>{\raggedleft}X}
+       \noindent Linguistics 409 & Homework 1\tabularnewline
+       \noindent \emph{Regular Expressions} & Due: January 22, 2012\\
+\end{tabularx}\\
+
+\section{Programmers: (30pts)} Please do problem 2.2 from the J\&M book (page 43).  Have fun, but don't go nuts here.  Just implement \emph{at most} a dozen patterns.  Provide (a) your working, commented source code and (b) output from an example run.
+
+\setcounter{section}{0}
+\section{Non-programmers: (30 pts)} Using the NFSA in problem 2.8 (page 44), please provide the following:
+
+\begin{enumerate}
+     \item The state-transition table
+     \item A regular expression
+     \item A few examples of grammatical sentences in this language.
+\end{enumerate}
+
+\section{Everyone: (40pts)} Please do problem 2.9 (page 44).  Please do not implement this in a programming language, even if you can.  Just use pseudo-code to describe what the changes to \textsc{D-Recognize} should look like.  The original, buggy version of \textsc{D-Recognize} is given in the lecture slides and on page 29 of the textbook.
+
+\section{Everyone: UNIX \& Regular Expressions (30 pts)}
+For each step, please provide the command you typed and, unless asked not to, the actual output it produced.  Hint:  the desired output, when required, will never be more than a few lines.  Another hint: not all of these are most easily solved with regular expressions.
+
+\begin{enumerate}
+     \item (2 pts) Download our corpus \url{http://www.gutenberg.org/cache/epub/730/pg730.txt} (no output required)
+     \item (2 pts) Write a regular expression to match all occurrences of `Dodger' in the corpus.  Use grep to execute this regexp and provide a count of the number of matches.
+     \item (2 pts) What is the most common word in this corpus? (full output not needed)
+     \item (2 pts) What is the least common word? (full output not needed)
+     \item (2 pts) How many times does `incorrigible' appear?
+     \item (20 pts) In this corpus, the word `lord' is sometimes pronounced with the final `d' and sometimes without it.  It is also sometimes capitalized and sometimes not.  Write a regular expression to match these variants.  Provide a count of how many times each variant occurs.
+\end{enumerate}
+
+
+\end{document}

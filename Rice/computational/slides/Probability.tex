@@ -1,0 +1,385 @@
+\documentclass[9pt,xcolor=pdftex,dvipsnames,table]{beamer} 
+\setbeamercolor{bgcolor}{fg=white,bg=blue!100}
+\mode<presentation>
+{
+  \usetheme{Darmstadt}
+ \setbeamertemplate{navigation symbols}{}
+  \setbeamercovered{transparent}
+  \setbeamertemplate{footline}
+{\rightline{\insertframenumber/\inserttotalframenumber}}
+}
+
+\def\newblock{}
+
+\newenvironment{changemargin}[2]{% 
+  \begin{list}{}{% 
+    \setlength{\topsep}{0pt}% 
+    \setlength{\leftmargin}{#1}% 
+    \setlength{\rightmargin}{#2}% 
+    \setlength{\listparindent}{\parindent}% 
+    \setlength{\itemindent}{\parindent}% 
+    \setlength{\parsep}{\parskip}% 
+  }% 
+  \item[]}{\end{list}} 
+  
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{lipsum}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[latin1]{inputenc}
+\usepackage{tipa}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{movie15}
+\usepackage{gb4e}
+\usepackage{longtable}
+\usepackage{pgf,pgfarrows,pgfnodes}
+\usepackage{tikz} 
+\usepackage{textpos}            % free image positioning 
+\setlength{\TPVertModule}{1cm}  % unit for vertical positioning 
+\setlength{\TPHorizModule}{1cm} % unit for horizontal positioning 
+
+\definecolor{lightorange}{rgb}{1,0.75,.25}
+\definecolor{lightred}{rgb}{1,0.25,.25}
+\definecolor{lightblue}{rgb}{.25,.25,1.0}
+\definecolor{lightgray}{rgb}{.75,.75,.75}
+
+\usepackage[T1]{fontenc}
+
+\title{Probability for (Computational) Linguists\footnote{some parts adapted from materials by Rens Bod}}
+\subtitle{}
+\author{Linguistics 409 $\cdot$ Computational Linguistics}
+\institute{Rice University}
+\date[]{{\small \today}}
+\usepackage{gb4e}
+
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+\makeatletter
+\newcommand\textsubscript[1]{\@textsubscript{\selectfont#1}}
+\def\@textsubscript#1{{\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}}
+\newcommand\textbothscript[2]{%
+  \@textbothscript{\selectfont#1}{\selectfont#2}}
+\def\@textbothscript#1#2{%
+  {\m@th\ensuremath{%
+    ^{\mbox{\fontsize\sf@size\z@#1}}%
+    _{\mbox{\fontsize\sf@size\z@#2}}}}}
+\def\@super{^}\def\@sub{_}
+\makeatother
+
+\begin{document}
+\definecolor{grey}{rgb}{1,0.6,.7}
+
+\section{Probability}
+
+\begin{frame}
+
+	\titlepage
+	\begin{center}
+		\includegraphics[width=.2\paperwidth]{bear}	
+	\end{center}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Probability has become central to Computational Linguistics}
+	\begin{itemize}
+		\item Speech recognition: find the most probable string of words given an acoustic signal
+		\item Probabilistic Context Free Grammars: not all ambiguous parses are equally likely
+		\item Word Sense Disambiguation: the likeliest word sense given the preceding word
+		\item Part of Speech tagging
+		\item Named entity recognition
+		\item Machine translation (probability of an English expression given a French expression)
+		\item etc., etc., etc.
+	\end{itemize}
+\end{frame}
+
+\subsection{}
+\begin{frame}{But it is also important for Linguistics proper!}
+	\begin{itemize}
+		\item Linguistic behavior is inherently gradient, e.g.:
+		\begin{itemize}
+		     \item language acquisition
+		     \item code switching
+		     \item sound change
+		     \item phonological acceptability
+		     \item morphological productivity
+		     \item syntactic wellformedness
+		     \item semantic interpretation judgments
+		     \item etc.
+		\end{itemize}
+		\item Probability theory provides a tool to model and account for the gradiency of linguistic behavior\textbf{}
+		\item And reasserts the importance of the mundane!
+	\end{itemize}
+\end{frame}
+
+\subsection{}
+\begin{frame}{So what are probabilities?}
+\vspace{.5cm}
+
+{\large As Abney says, we don't actually know for certain.  There are two main viewpoints: }
+\vspace{.5cm}
+     \begin{description}
+          \item[Frequentist] (aka objectivist)  Probabilities are real aspects of the world that can be measured by relative frequencies of outcomes of experiments.
+
+          \item[Bayesian] (aka subjectivist) Probabilities are descriptions of an observer's degree of belief or uncertainty rather than having any external significance.
+
+     \end{description}
+
+Both views are relevant for (computational)? linguistics.  Fortunately, the laws of probability theory remain the same under both interpretations.
+
+\end{frame}
+
+\subsection{}
+\begin{frame}{Frequencies matter in linguistics}
+
+{\large There is an extremely large psycholinguistic literature, showing that:}
+     \begin{enumerate}
+          \item People register frequencies and differences in frequencies {\small (e.g. Mehler \& Carey 1968; Hasher \& Chromiak 1977; Tanenhaus 1995)}
+          \item People's judgments of words and sentences are very well predicted
+by the combined frequencies of their subparts {\small (e.g. Baayen et al. 1997; Coleman \& Pierrehumbert 1997; Hay 2001)}
+		  \item Probability theory offers a framework which can compute the probability
+of a \emph{whole} from the probabilities of its \emph{parts}.
+     \end{enumerate}
+\end{frame}
+
+\subsection{}
+\begin{frame}{A working definition...}
+
+\vspace{.5cm}
+     \begin{itemize}
+          \item The probability of an event e is computed as the relative frequency with which $e$ occurs in a sequence of $n$ identical experiments:
+          \item That is, the probability $P$ of an event $e$ is computed as:
+          
+          	\begin{equation}{P(e) = \frac{n_e}{n}}\end{equation}
+          
+          \item $n_e$ is the number of occurrences of the event $e$ in $n$ identical experiments.
+          \item In \emph{practice}, we compute the probability of an event as the relative frequency with which it occurs in a large corpus of linguistic data.
+     \end{itemize}
+     
+     {\large \textbf{``But the frequency is not the same as the probability, rather it is a consequence of the probability.''}}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Example...}
+
+{\large \textbf{Example:} Suppose we have a simple corpus of 50 words consisting of:}
+
+\begin{itemize}
+	\item 25 nouns
+	\item 20 verbs
+	\item 5 adjectives
+\end{itemize}
+\vspace{.25cm}
+
+Then the probability of sampling a word is:
+\begin{itemize}
+	\item P({noun}) = 25/50 = 0.5
+	\item P({verb}) = 20/50 = 0.4
+	\item P({adjective}) = 5/50 = 0.1
+\end{itemize}
+\vspace{.25cm}
+
+\end{frame}
+
+\subsection{}
+\begin{frame}{Example: note that...}
+
+Then the probability of sampling a word is:
+\begin{itemize}
+	\item P({noun}) = 25/50 = 0.5
+	\item P({verb}) = 20/50 = 0.4
+	\item P({adjective}) = 5/50 = 0.1
+\end{itemize}
+\vspace{.25cm}
+
+\begin{itemize}
+     \item A probability is a number between 0 and 1
+     \item The probabilities of an exhaustive set of outcomes must sum to 1
+     \item $P(\{noun\} \cup \{verb\} \cup \{adjective\}) = 1$
+     \item What is the probability that one of the words in this corpus is the definite article?
+\end{itemize}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Joint Probabilities}
+
+{\large Joint probabilities describe the probability of two (or more) events occurring.}
+\vspace{.5cm}
+
+\begin{quotation}E.g., in describing the probability that a sentence has a certain structure we want to know the joint probability of the rules generating the structure.
+\end{quotation}
+\vspace{.25cm}
+
+Coming back to our simple corpus (25 nouns, 20 verbs and 5 adjectives):
+In an experiment where we sample two words, what is the probability of
+sampling a noun and a verb?
+\vspace{.25cm}
+
+We write this as: $P(\{noun\}, \{verb\})$ or as: $P(\{noun\} \cap \{verb\})$\\
+\end{frame}
+
+\subsection{}
+\begin{frame}{Joint Probabilities}
+
+{\large Joint probabilities describe the probability of two (or more) events occurring.}
+\vspace{.5cm}
+
+Remember that we have already computed the single probabilities:
+
+     \begin{itemize}
+          \item $P(\{noun\}) = 0.5$
+          \item $P(\{verb\}) = 0.4$
+     \end{itemize}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Joint probabilities}
+
+     \begin{description}
+          \item[\textbf{Intuitively:}] We sample a noun in 50\% of the cases and a verb in 40\% of the cases.  Thus, we sample them together in 50\% of 40\% of experiments, i.e. in 20\% of the cases.
+
+          \item[\textbf{Formally:}] $P(\{noun\}, \{verb\}) = P(\{noun\}) x P(\{verb\}) = 0.5 x 0.4 = 0.2$\\
+          We can do this simple multiplication because we tacitly assumed that
+sampling a \emph{verb} is ``independent'' of sampling a \emph{noun}.
+
+          \item[\textbf{In general, for two \emph{independent} events:}]\hspace{.5cm}\\
+          $P(e_1, e_2)$ = $P(e_1) x P(e_2)$ if $e_1$ and $e_2$ are independent.
+     \end{description}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Conditional probabilities}
+
+{\large It is often the case that events are \textbf{dependent}}
+\vspace{.25cm}
+
+Suppose that in our example corpus a \emph{noun} is always followed by a
+\emph{verb}. Then, in an experiment where we sample two \emph{consecutive} words, the probability that the word at position $n + 1$ is a \emph{verb} given that we have first sampled a \emph{noun} at position $n$ is 1.
+\vspace{.5cm}
+
+     \begin{description}
+          \item[\textbf{Definition:}]
+          The probability of an event $e_2$ given that we have seen event $e_1$ is called the conditional probability of e2 given e1, and is written as $P(e_2 | e_1)$.
+
+          \item[\textbf{Example:}] Using the example corpus and experiment described above, what is the probability of sampling a \emph{noun} and a \emph{verb}?
+          
+          \begin{itemize}
+          	\item $P(\{noun\}) = 0.5$
+          	\item $P(\{verb\} | \{noun\}) = 1$
+          \end{itemize}
+          
+     \end{description}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Conditional probabilities}
+
+{\large Their joint probability is then the product:}
+\vspace{.25cm}
+
+$P(\{noun\}, \{verb\})$ = $P(\{noun\})$ x $P(\{verb\} | \{noun\})$ = $0.5$ x $1$ = $0.5$
+\vspace{.25cm}
+
+Because in our example corpus a \emph{noun} is always followed by a
+\emph{verb}. In an experiment where we sample two \emph{consecutive} words, the probability of sampling a \emph{verb} given that we have first sampled a \emph{noun} is 1: $P(e_2 = verb | e_1 = noun) = 1$
+\vspace{.25cm}
+
+     \begin{description}
+          \item[\textbf{In general:}] $P(e_1, e_2) = P(e_1) x P(e_2 | e_1)$
+     \end{description}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Multiplication Rule}
+
+{\large Multiplication Rule}
+\vspace{.25cm}
+
+     \begin{description}
+          \item[\textbf{In general:}] $P(e_1, e_2) = P(e_1) x P(e_2 | e_1)$
+     \end{description}
+
+\vspace{.25cm}
+
+We can rewrite the multiplication rule as a general definition for conditional
+probability of two events $e$ and $f$:
+\vspace{.5cm}
+
+{\large \textbf{Bayes' rule}}
+
+\begin{equation*}
+P(e|f) = \frac{P(e,f)}{P(f)} = \frac{P(e) x P(f|e)}{P(f)}
+\end{equation*}
+\end{frame}
+
+\subsection{}
+\begin{frame}{The Chain Rule}
+
+The multiplication rule is generalized to multiple events by the \textbf{chain rule}:
+
+\begin{equation*}
+	P(e_1,e_2,e_3,e_4,e_n) = P(e_1) x P(e_2|e_1) x P(e_3|e_2,e_1) x ... x P( e_n | e_{n-1}, e_{n-2},...,e_1)
+\end{equation*}
+
+This long product is usually expressed:
+
+\begin{equation*}
+	P(e_1,e_2,...,e_n) = \prod_{i=1}^{n} P( e_i | e_{i-1}, e_{i-2},...,e_1)
+\end{equation*}
+
+Which is much simpler if the events are independent:
+
+\begin{equation*}
+	P(e_1,e_2,...,e_n) = \prod_{i=1}^{n} P( e_i )
+\end{equation*}
+
+Or in case each event depends only on the preceding event (a 1st order Markov model):
+
+\begin{equation*}
+	P(e_1,e_2,...,e_n) = \prod_{i=1}^{n} P( e_i | e_{i - 1})
+\end{equation*}
+\end{frame}
+
+\subsection{}
+\begin{frame}{A brief digression: logs}
+
+{\large As an aside, in computatonal linguistics we're often going to use \textbf{log probabilities} rather than real numbers between 0 and 1 in our calculations and tools.  This is for a number of practical reasons:}
+\vspace{.5cm}
+
+\begin{itemize}
+	\item We can calculate the product of probabilities with addition of logs rather than the more expensive/slower multiplication.
+	\item We can avoid the accumulation of floating point rounding errors inherent in computing with very small or very large real numbers.
+	\item Many probabilities in natural language are logarithmically distributed anyway so the comparison of logs is often more intuitable.
+\end{itemize}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Example: the probability of a sentence}
+
+\begin{center}
+\begin{tabular}{ l l l l l }
+	          Colorless & green & ideas & sleep & furiously\\
+              3 & 94 & 143 & 65 & 12 \\
+\end{tabular}
+\end{center}
+
+
+\vspace{.5cm}
+
+\end{frame}
+
+\subsection{}
+\begin{frame}{For next time:}
+
+     \begin{block}{For next time:}
+          \begin{enumerate}
+          \item Friday: \textbf{N-Gram models}
+          \end{enumerate}
+     \end{block}
+\end{frame}
+
+
+\end{document}

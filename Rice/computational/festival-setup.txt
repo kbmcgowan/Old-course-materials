@@ -1,0 +1,45 @@
+#!/bin/sh
+
+echo this is written as a script, but you should probably execute each command (or block) individually in case problems crop up.
+
+mkdir build
+cd build
+
+wget http://festvox.org/festvox-2.1/festvox-2.1-release.tar.gz
+wget http://kmcgowan.rice.edu/festival/festvox_speech_tools2.1.patch
+
+wget http://festvox.org/packed/festival/2.1/festival-2.1-release.tar.gz
+wget http://festvox.org/packed/festival/2.1/festlex_CMU.tar.gz
+wget http://festvox.org/packed/festival/2.1/festlex_POSLEX.tar.gz
+wget http://festvox.org/packed/festival/2.1/festvox_kallpc16k.tar.gz
+wget http://festvox.org/packed/festival/2.1/speech_tools-2.1-release.tar.gz
+
+for f in `ls *.gz`; do
+	echo expanding $i
+	tar zxf $i
+done
+
+mv festvox_speech_tools2.1.patch festvox
+cd festvox
+path -p1 <festvox_speech_tools2.1.patch
+
+cd ..
+export ESTDIR=`pwd`/speech_tools
+export FESTVOXDIR=`pwd`/festvox
+export FESTIVALBIN=`pwd`/festival/bin/
+
+cd speech_tools
+./configure
+make
+cd ..
+
+cd festival
+./configure
+make
+cd ..
+
+cd festvox
+./configure
+make
+cd ..
+

@@ -1,0 +1,34 @@
+#!/usr/bin/python
+
+# load the libraries needed
+# import nltk and run nltk.download() in an interactive python shell if you need the Brown
+# corpus (and other corpora)
+#
+from nltk.corpus import brown
+from nltk.tag import UnigramTagger
+from nltk.tag.brill import SymmetricProximateTokensTemplate, ProximateTokensTemplate
+from nltk.tag.brill import ProximateTagsRule, ProximateWordsRule, FastBrillTaggerTrainer
+brown_train = list(brown.tagged_sents(categories='news')[:500])
+brown_test = list(brown.tagged_sents(categories='news')[500:600])
+unigram_tagger = UnigramTagger(brown_train)
+templates = [
+        SymmetricProximateTokensTemplate(ProximateTagsRule, (1,1)),
+        SymmetricProximateTokensTemplate(ProximateTagsRule, (2,2)),
+        SymmetricProximateTokensTemplate(ProximateTagsRule, (1,2)),
+        SymmetricProximateTokensTemplate(ProximateTagsRule, (1,3)),
+        SymmetricProximateTokensTemplate(ProximateWordsRule, (1,1)),
+        SymmetricProximateTokensTemplate(ProximateWordsRule, (2,2)),
+        SymmetricProximateTokensTemplate(ProximateWordsRule, (1,2)),
+        SymmetricProximateTokensTemplate(ProximateWordsRule, (1,3)),
+        ProximateTokensTemplate(ProximateTagsRule, (-1, -1), (1,1)),
+        ProximateTokensTemplate(ProximateWordsRule, (-1, -1), (1,1)),
+        ]
+trainer = FastBrillTaggerTrainer(initial_tagger=unigram_tagger, templates = templates, trace=3, deterministic=True)
+brill_tagger = trainer.train(brown_train, max_rules=10)
+
+brill_tagger.evaluate(brown_test)
+
+test_sent = 'This sentence is intended to demonstrate Brill to the class.'.split()
+unigram_tagger.tag(test_sent)
+brill_tagger.tag(test_sent)
+ 

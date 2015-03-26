@@ -1,0 +1,184 @@
+\documentclass[9pt,xcolor=pdftex,dvipsnames,table]{beamer} 
+\setbeamercolor{bgcolor}{fg=white,bg=blue!100}
+\mode<presentation>
+{
+  \usetheme{Darmstadt}
+ \setbeamertemplate{navigation symbols}{}
+  \setbeamercovered{transparent}
+  \setbeamertemplate{footline}
+{\rightline{\insertframenumber/\inserttotalframenumber}}
+}
+
+\def\newblock{}
+
+\newenvironment{changemargin}[2]{% 
+  \begin{list}{}{% 
+    \setlength{\topsep}{0pt}% 
+    \setlength{\leftmargin}{#1}% 
+    \setlength{\rightmargin}{#2}% 
+    \setlength{\listparindent}{\parindent}% 
+    \setlength{\itemindent}{\parindent}% 
+    \setlength{\parsep}{\parskip}% 
+  }% 
+  \item[]}{\end{list}} 
+  
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{lipsum}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[latin1]{inputenc}
+\usepackage{tipa}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{movie15}
+\usepackage{gb4e}
+\usepackage{longtable}
+\usepackage{pgf,pgfarrows,pgfnodes}
+\usepackage{tikz} 
+\usepackage{textpos}            % free image positioning 
+\setlength{\TPVertModule}{1cm}  % unit for vertical positioning 
+\setlength{\TPHorizModule}{1cm} % unit for horizontal positioning 
+
+\definecolor{lightorange}{rgb}{1,0.75,.25}
+\definecolor{lightred}{rgb}{1,0.25,.25}
+\definecolor{lightblue}{rgb}{.25,.25,1.0}
+\definecolor{lightgray}{rgb}{.75,.75,.75}
+
+\usepackage[T1]{fontenc}
+
+\title{MaxEnt}
+\subtitle{}
+\author{Linguistics 409 $\cdot$ Computational Linguistics}
+\institute{Rice University}
+\date[]{{\small \today}}
+\usepackage{gb4e}
+
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+\makeatletter
+\newcommand\textsubscript[1]{\@textsubscript{\selectfont#1}}
+\def\@textsubscript#1{{\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}}
+\newcommand\textbothscript[2]{%
+  \@textbothscript{\selectfont#1}{\selectfont#2}}
+\def\@textbothscript#1#2{%
+  {\m@th\ensuremath{%
+    ^{\mbox{\fontsize\sf@size\z@#1}}%
+    _{\mbox{\fontsize\sf@size\z@#2}}}}}
+\def\@super{^}\def\@sub{_}
+\makeatother
+
+\begin{document}
+\definecolor{grey}{rgb}{1,0.6,.7}
+
+\begin{frame}
+
+	\titlepage
+\end{frame}
+
+\section{Regression}
+
+\subsection{}
+\begin{frame}{``Two Worlds'' (courtesy Mark Johnson)}
+    \setbeamercovered{invisible}
+
+    {\large Warning: Linguists and statisticians use same words to mean different things!}
+    \vspace{.5cm}
+    
+	\begin{description}
+		\item[feature]
+			\begin{itemize}
+				\item linguistics, e.g., `voiced' is a function from phones to +/-
+				\item statistics, what linguists call constraints (a binary function from candidate/outcome pairs to real numbers)
+			\end{itemize}
+
+		\item[constraint]
+			\begin{itemize}
+				\item linguistics, what the statisticians call ``features''
+				\item statistics, a property that the estimated model P must have
+			\end{itemize}
+			
+		\item[outcome]
+			\begin{itemize}
+				\item linguistics, a result
+				\item statistics, the set of objects we are defining a probability distribution over (the set of all candidate surface forms)
+			\end{itemize}
+			
+	\end{description}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Linear Regression (example)}
+    \setbeamercovered{invisible}
+    
+	    \begin{equation*} m = \frac{\bar{xy} - \bar{x} \cdot \bar{y}}{\bar{x^2} - (\bar{x})^2}\end{equation*}
+    	\vspace{.5cm}
+         \begin{equation*} b = \bar{y} - m\bar{x}\end{equation*}
+         
+	\begin{itemize}
+		\item Let's consider a set of simple points: (1,2) (2,1) and (4,3)
+
+	\begin{equation*} \bar{x} = \frac{1 + 2 + 4}{3} = \frac{7}{3}\end{equation*}
+	\begin{equation*} \bar{y} = \frac{2 + 1 + 3}{3} = 2\end{equation*}
+		\begin{equation*} \bar{xy} = \frac{1 \cdot 2 + 2 \cdot 1 + 4 \cdot 3}{3} = \frac{16}{3}\end{equation*}
+		
+		\vspace{.5cm}
+		
+		\item Let's try this in R to see what it looks like.
+	\end{itemize}
+
+\end{frame}
+
+\subsection{}
+\begin{frame}{Linear Regression (example)}
+    \setbeamercovered{invisible}
+    
+	\begin{equation*} m = \frac{\bar{xy} - \bar{x} \cdot \bar{y}}{\bar{x^2} - (\bar{x})^2}\end{equation*}
+	\vspace{.5cm}
+	\begin{equation*} b = \bar{y} - m\bar{x}\end{equation*}
+
+	\begin{itemize}
+		\item In statistics, this is useful because we can look for a linear relationship among the data points.
+		\item We don't just want a fit, though, we want predictions!
+		\item Now, crucially, we can \emph{predict} new y values for x values with the equation:
+	\end{itemize}
+	
+	\vspace{.5cm}
+	
+	\begin{equation*} prediction = b \cdot x + \epsilon \end{equation*}
+\end{frame}
+
+\subsection{}
+\begin{frame}{Logistic Regression}
+    \setbeamercovered{invisible}
+
+	\begin{itemize}
+		\item Logistic regression is conceptually similar, except
+		\item In logistic regression, the value we're trying to predict (the dependent variable) is categorical yes/no; on/off; 1/0; male/female; NN/JJ; etc.
+		\item We could still calculate the slope, but the 
+	\end{itemize}
+	
+	\vspace{.5cm}
+	
+	\begin{equation*} prediction = b \cdot x + m \end{equation*}
+\end{frame}
+
+\subsection{}
+\begin{frame}{For next time:}
+     \begin{block}{For next time:}
+          \begin{enumerate}
+     	  \item Assignment 1 will be posted tonight.\\
+          \item There will be a short UNIX reading on OwlSpace for Wednesday.\\
+          \item Please bring a computer if you have one!\\
+          \item Wednesday: \textbf{Wrap up FSAs \& Start UNIX}
+          \end{enumerate}
+     \end{block}
+\end{frame}
+
+
+
+\end{document}
+
+

@@ -1,0 +1,28 @@
+digraph finite_state_machine {
+        rankdir=LR;
+        size="5,5"
+        node [shape = plaintext]; "";   /* no circle for empty node */
+        node [shape = doublecircle, style=filled, color=orange]; q4; /* shape for terminal node */
+        node [shape = circle, style=filled, color=orange];
+
+        q0 -> q1 [ label = "b" ];
+        q1 -> q2 [ label = "a" ];
+        q2 -> q3 [ label = "a" ];
+        q3 -> q3 [ label = "a", dir = back ];
+        q3 -> q4 [ label = "!" ];
+
+	q0 -> q_fail [ label = "a" ];
+	q0 -> q_fail [ label = "!" ];
+
+	q1 -> q_fail [ label = "b" ];
+	q1 -> q_fail [ label = "!" ];
+
+	q2 -> q_fail [ label = "b" ];
+	q2 -> q_fail [ label = "!" ];
+
+	q3 -> q_fail [ label = "b" ];
+
+	q4 -> q_fail [ label = "b" ];
+	q4 -> q_fail [ label = "a" ];
+	q4 -> q_fail [ label = "!" ];
+}

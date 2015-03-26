@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+\usepackage{tipa}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage[hmargin=1 in, margin=.75 in,nohead,nofoot]{geometry}
+
+\begin{document}
+\noindent
+\begin{tabularx}{\textwidth}{X>{\raggedleft}X}
+       \noindent Linguistics 409 & Homework 2\tabularnewline
+       \noindent \emph{FSTs, Morphology, and Edit Distance} & Due: February 7, 2013\\
+\end{tabularx}\\
+
+\section{Finite State Transducers \& Morphology (30 pts)}
+
+\subsection{(25 pts)} Please do problem 3.2 (p.81) and use the \texttt{dot} language (available on the CLEAR machines or for free download from \url{http://www.graphviz.org/}) to draw the resulting FST.  Full dot documentation is available from \url{http://www.graphviz.org/Documentation.php}.  Here is the dot input used to generate a figure like J\&M's 3.17:
+     
+     \begin{verbatim}
+/*  Save to FST3-17.dot and generate image with command:
+    dot -T png -o FST.png FST3-17.dot */
+
+digraph jm_three_seventeen {
+    /* tries to flatten the graph out, left to right */
+    rankdir = LR;
+
+    /* next line sets the shape for accept nodes */
+    node [shape = doublecircle, style=filled, color=azure3]; q0 q1 q2;
+
+    /* make all nodes the same shape and color */
+    node [shape = circle, style=filled, color=azure3];
+
+    /* define the edges of our graph */
+    q0 -> q0 [ label = "^:&epsilon;\nother\n#", dir = back];
+    q0 -> q1 [ label = "z,s,x"];
+
+    q1 -> q0 [ label = "#,other"];
+    q1 -> q1 [ label = "z,s,x", dir = back];
+    q1 -> q2 [ label = "^:&epsilon;"];
+
+    q2 -> q0 [ label = "#,other"];
+    q2 -> q1 [ label = "z,x"];
+    q2 -> q3 [ label = "&epsilon;:e"];
+    q2 -> q5 [ label = "s"];
+
+    q3 -> q4 [ label = "s"];
+
+    q4 -> q0 [ label = "#"];
+
+    q5 -> q0 [ label = "other"];
+    q5 -> q1 [ label = "z,s,x"];
+    q5 -> q2 [ label = "^:&epsilon;"];
+}
+     \end{verbatim}
+     
+     \textbf{Protip:} On the CLEAR machines: create a UNIX directory with \texttt{mkdir -p \~{}/Public/www/hw2/}, use \texttt{mv} or \texttt{cp} to put your png file in that directory, and then point your web browser at http://netid.web.rice.edu/hw2/ (where `netid' is your Rice NetID name) to easily see the image.
+
+\subsection{(5pts)} Please answer J\&M problem 3.9:  Why does our figure 3.17 include a z,s,x arc from q5 to q1?
+
+\section{Minimum Edit Distance: (30 pts)}
+
+Please do problem 3.10.  Be sure to draw and hand in the matrices for \texttt{drive} $\rightarrow$ \texttt{brief} and \texttt{drive} $\rightarrow$ \texttt{divers}, provide edit distances between each pair of strings, explain which pair is closer, and highlight the best path through each matrix.
+
+
+\end{document}

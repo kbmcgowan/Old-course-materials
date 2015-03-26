@@ -1,0 +1,12 @@
+digraph finite_state_machine {
+        rankdir=LR;
+        node [shape = plaintext]; "";   /* no circle for empty node */
+        node [shape = doublecircle, style=filled, color=azure3]; q5; /* shape for terminal node */
+        node [shape = circle, style=filled, color=azure3];
+
+        q0 -> q1 [ label = "c:c"];
+        q1 -> q2 [ label = "a:a"];
+        q2 -> q3 [ label = "t:t"];
+        q3 -> q4 [ label = "+N:&epsilon;"];
+        q4 -> q5 [ label = "+PL:s"];
+}

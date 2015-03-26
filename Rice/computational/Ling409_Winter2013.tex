@@ -1,0 +1,232 @@
+\documentclass [11pt]{article}
+\usepackage{setspace,amssymb,latexsym,amsmath,amscd,epsfig,amsthm,wasysym}
+\usepackage{termcal}
+\usepackage{hyperref}
+
+% Few useful commands (our classes always meet either on Monday and Wednesday 
+% or on Tuesday and Thursday)
+
+\newcommand{\MWFClass}{%
+\calday[Monday]{\classday} % Monday
+\skipday % Tuesday (no class)
+\calday[Wednesday]{\classday} % Wednesday
+\skipday % Thursday (no class)
+\calday[Friday]{\classday} % Wednesday
+\skipday\skipday % weekend (no class)
+}
+
+\newcommand{\MWClass}{%
+\calday[Monday]{\classday} % Monday
+\skipday % Tuesday (no class)
+\calday[Wednesday]{\classday} % Wednesday
+\skipday % Thursday (no class)
+\skipday % Friday 
+\skipday\skipday % weekend (no class)
+}
+
+\newcommand{\TRClass}{%
+\skipday % Monday (no class)
+\calday[Tuesday]{\classday} % Tuesday
+\skipday % Wednesday (no class)
+\calday[Thursday]{\classday} % Thursday
+\skipday % Friday 
+\skipday\skipday % weekend (no class)
+}
+
+\newcommand{\Holiday}[2]{%
+\options{1}{\noclassday}
+\caltext{1}{2}
+}
+
+\font\minihelv=phvr at 6pt
+\font\helv=phvr at 10pt
+\font\bighelv=phvr at 20pt
+\font\hugehelv=phvr at 36pt
+\font\mybigfont=phvr at 16pt
+\font\mymediumfont=phvr at 14pt
+\font\mediumhelv=phvr at 14pt
+\font\mybfit=ptmbi at 12pt
+
+\def\minivskip{\vskip 1.5mm}
+\def\myspace{\phantom{\Biggr\|}}
+\def\leavespace{\vskip 4mm}
+
+\def\cosec{\hbox{cosec}}
+\def\sec{\hbox{sec}}
+\def\cotan{\hbox{cotan}}
+
+\parindent=0pt
+\setlength{\evensidemargin}{0.0cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\topmargin}{-1.5cm}
+%\setlength{\baselineskip}{20pt}
+\setlength{\textwidth}{17cm}
+\setlength{\textheight}{23.5cm}
+\hoffset = -0.25cm
+
+\begin{document}
+
+   \begin{center}
+
+     {\large Linguistics 409 -- Spring 2013\\ \textbf{Computational Linguistics} \\ M/W/F 9:00 - 9:50 in HUM 119 } \\
+     \ \\
+
+     \begin{tabular}{ l r }
+
+       \begin{tabular}{l l}
+          Instructor:& Dr. Kevin B. McGowan     \\
+                            & kmcgowan@rice.edu    \\
+                            & 208 Herring Hall           \\
+       \end{tabular}
+
+       &
+
+       \begin{tabular}{l l }
+          Office Hours: & Monday  10:00 - 11:00am\\
+                           & Wednesdays 3:00 - 4:00pm\\
+                                   & or by appointment\\
+       \end{tabular}
+     \end{tabular}
+   \end{center}
+   \ \\
+
+{\bf Course Description and Goals}\\
+This course is designed to do two things:
+\begin{enumerate}
+     \item This course is primarily an introduction to computational linguistics (with a strong emphasis on the \emph{linguistics}).  We will work our way through regular expressions, finite state automata, finite state transducers and morphology, N-gram models, part of speech (POS) tagging, hidden Markov models, text-to-speech, automatic speech recognition, computational phonology, context free grammars (CFGs), syntactic parsing, statistical parsers,  feature unification grammars, computational lexical semantics, and computational approaches to discourse.  As we cover each computational topic we will also reflect on related advances in research on human language processing and cognition.
+     
+     This is pretty ambitious.  We may not get to all of it, and we won't go very deeply into any one topic.  It is reasonable to think of this as a survey course --like Ling 200 only much, much harder.
+     
+     \item Secondarily, but just as essentially, this course will introduce (or reinforce!) a set of skills necessary to do computational linguistics.  These will include basic UNIX skills, probability, phonetic transcription, phonological analysis, morphological analysis, syntactic parsing, lamda 
+\end{enumerate}
+
+Required Course Background Prerequisites: LING 200 or equivalent knowledge of linguistics.
+
+What I assume you remember from this course:
+\begin{itemize}
+     \item the basics of phonetics, phonology, morphology, syntax, semantics, and discourse.
+     \item the general goals of the scientific study of language.
+\end{itemize}
+
+{\bf Required Textbooks}\\
+
+Daniel Jurafsky and James H. Martin. 2008. \emph{Speech and Language Processing: An Introduction to Natural Language Processing Computational Linguistics, and Speech Recognition} \textbf{Second Edition}, ISBN 0-13-187321-0. Important: Be sure you get the second edition;  the first edition is ancient and buggy.
+
+Allen Downey. 2012. \emph{Think Python: How to Think Like a Computer Scientist}. ISBN: 144933072X  Available free from: \url{http://www.greenteapress.com/thinkpython/} \\
+
+The Jurafsky \& Martin book should be available at the bookstore or through online retailers.  You cannot get away without having and, crucially, reading Jurafsky and Martin.  Any other materials we use in class --handouts, exercises, assignments-- will be distributed via OwlSpace.  \\
+
+ {\bf Course Requirements}\\
+  \begin{enumerate}
+       \item \textbf{Homework Assignments \& Quizzes} \hfill{} 70\%\\
+	    There will be several homework assignments and quizzes over the course of the semester.  Your lowest homework or quiz grade will be excluded from the calculation of final grades.
+	
+       \item \textbf{Take-home midterm} \hfill{} 15\%\\
+	
+       \item \textbf{Take-home final exam} \hfill{} 15\%\\
+       
+  \end{enumerate}
+\ \\
+
+{\bf Homework Information}
+
+Homework sheets will be available for download from OwlSpace.  Completed homeworks are to be uploaded to the course website.  Unless otherwise indicated on the assignment, hardcopy assignments will not be accepted.  I vastly prefer PDF or RTF to proprietary file formats.  Please don't give me Word files.  Would you give someone a can of delicious beans that could only be properly opened by a single company's proprietary opener?  Would you give someone a book that could only be read under a particular brand of lightbulb?  No, because those things would be ridiculous. \\
+
+{\bf Late Homework Policy}\\
+I will accept late homework if you ask \emph{in advance} for an extension.  ``In advance'' means \emph{more} than 24 hours before the assignment is due.  I have been very forgiving about this in the past and it leads to students getting in the habit of not handing in work and me grading piles and piles of work at the end of the semester that I should have been able to do as the semester progressed.  I intend not to be very forgiving this semester.\\
+
+{\bf Honor Policy}\\
+Appropriating someone else's work and portraying it as your own is cheating.  Collaborating with someone and portraying that work as solely your own is cheating.  Obtaining answers to homework assignments or exams from previous semesters is cheating. Falsifying data or experimental results is cheating. (The foregoing is not intended to be a complete list. A complete description of Rice's Honor Code, plagiarism, and other general information can be found at the Rice Honor Council Web page at http://honor.rice.edu/).  If you are caught cheating, you will be referred to the Honor Council.  If you are unsure about whether a specific action is cheating, you may check with the intstructor.  Some general guidelines are:\\
+
+\begin{itemize}
+     \item Do not look at notes, assignments, or exams from previous semesters.
+     \item Do not seek solutions to homework problems or exams from outside sources, including books (other than the textbook) or the internet.
+     \item Do not copy other (current or former) studentsÕ homework assignments. To minimize this temptation, always type up your homework answers by yourself, separately from your study group or other students in the class.
+     \item Once you have started to work on your acoustics or final exam, do not discuss it with other students, until after you have turned it in and the exam time is over.
+     \item Do not falsify data or other results in your homeworks or Extra Credit project.
+     \item Cite all sources used and cite and designate all quotations as such.
+\end{itemize}
+
+{\bf Study Groups}\\
+
+I encourage students to form study groups to talk about readings and lectures, and especially to discuss and work through understanding how to solve homework problems.  Invite me if you want and I'll try to come.  However, after you figure/argue them out together, \emph{you must do the work and type up your homework answers entirely on your own}, separately from the other study group members.  You must also list the names of all of the members of your group at the top of your assignment.  Failure to list study group members is an unethical misappropriation of others' contributions without acknowledgement;  here I refer you to the previous section.\\
+
+ {\bf Americans with Disabilities Act}
+ 
+ If any student in the class has a documented disability needing academic adjustments or accommodations, please get in touch with me during the first two weeks of class.  All discussions will remain confidential.  Students with disabilities will also need to contact Disability Support Services in the Ley Student Center.  I look forward to working with you to make this class enjoyable and accessible for all. \ \\
+
+\pagebreak{}
+{\bf  Preliminary Class \& Reading Schedule }\\
+Readings are in \textbf{boldface}.  Except for Chapter 1, readings should be completed prior to the first day they are listed.  Please note that this schedule is preliminary: dates and topics and even readings are subject to change.
+
+\begin{center}
+\begin{calendar}{01/07/2013}{15}
+\setlength{\calboxdepth}{.3in}
+\MWFClass
+% schedule
+\caltexton{1}{Overview \& What is Computational Linguistics? 1\\\textbf{JM ch1}}
+\caltextnext{What is Computational Linguistics? 2}
+\caltextnext{Regular Expressions\\\textbf{JM ch2 pp 17 - 26}}
+
+\caltextnext{Regular Expressions\\\textbf{JM ch2 pp 26 - 44}}
+\caltextnext{Basic UNIX skills 1\\}
+\caltextnext{Basic UNIX skills 2\\}
+\caltextnext{Morphology\\\textbf{JM ch. 3 pp 45 - 52}}
+
+\caltextnext{Finite State Transducers\\\textbf{JM ch. 3 pp 52 - 67}}
+\caltextnext{Stemming, Spelling, Edit Distance\\\textbf{JM ch. 3 pp 68 - 79}}
+
+\caltextnext{Probability for Linguists\\\textbf{Abney (OwlSpace)}}
+\caltextnext{N-Gram models\\\textbf{JM ch. 4 pp 81 - 97}}
+\caltextnext{N-Gram models\\\textbf{JM ch. 4 pp 81 - 97}}
+\caltextnext{Smoothing, Backoff, \& Interpolation\\\textbf{JM ch. 4 pp 97 - 109}}
+%\caltextnext{Advanced N-Gram models\\\textbf{JM ch. 4 pp 109 - 121}}
+
+\caltextnext{Part of Speech Tagging\\\textbf{JM ch. 5 pp 123 - 139}}
+\caltextnext{Part of Speech Tagging\\\textbf{JM ch. 5 pp 139 - 149}}
+\caltextnext{Part of Speech Tagging\\\textbf{JM ch. 5 pp 149 - 157}}
+
+\caltextnext{Hidden Markov Models\\\textbf{JM ch. 6 pp 173 - 183}}
+\caltextnext{Hidden Markov Models\\\textbf{JM ch. 6 pp 184 - 192}}
+\caltextnext{MaxEnt\\\textbf{JM ch. 6 pp 192 - 200}}
+
+\caltextnext{MaxEnt\\\textbf{JM ch. 6 pp 201 - 207}}
+\caltextnext{MaxEnt\\\textbf{JM ch. 6 pp 207 - 213}}
+
+\caltextnext{Speech Synthesis\\\textbf{JM ch. 8 pp 249 - 261}}
+\caltextnext{Speech Synthesis\\\textbf{JM ch. 8 pp 262 - 276}}
+\caltextnext{Speech Synthesis\\\textbf{JM ch. 8 pp 276 - 284}}
+
+\caltextnext{ASR\\\textbf{JM ch. 9 pp 285 - 302}}
+\caltextnext{ASR\\\textbf{JM ch. 9 pp 303 - 314}}
+\caltextnext{ASR\\\textbf{JM ch. 9 pp 314 - 331}}
+
+\caltextnext{Context Free Grammars\\\textbf{JM ch. 12 pp 385 - 404}}
+\caltextnext{Context Free Grammars\\\textbf{JM ch. 12 pp 404 - 414}}
+\caltextnext{Syntactic Parsing\\\textbf{JM ch. 13 pp 427 - 443}}
+
+\caltextnext{Syntactic Parsing\\\textbf{JM ch. 13 pp 443 - 457}}
+\caltextnext{Statistical Parsing\\\textbf{JM ch. 14 pp 459 - 479}}
+
+\caltextnext{Statistical Parsing\\\textbf{JM ch. 14 pp 479 - 486}}
+\caltextnext{Competitive Grammar Writing}
+\caltextnext{Competitive Grammar Writing}
+
+\caltextnext{Machine Translation\\\textbf{JM ch. 25 pp 859 - 879 (s1-4)}}
+\caltextnext{Machine Translation\\\textbf{JM ch. 25 pp 879 - 899 (s5-10)}}
+
+\caltextnext{Meaning\\\textbf{JM ch. 17 pp 545 - 580}}
+\caltextnext{Computational Semantics\\\textbf{JM ch. 18 pp 583 - 598 \&605 - 607}}
+\caltextnext{Lexical Semantics\\\textbf{JM ch. 19 pp 611 - 633}}
+
+\options{1/21/2013}{\noclassday}
+\options{2/25/2013}{\noclassday}
+\options{2/27/2013}{\noclassday}
+\options{3/1/2013}{\noclassday} % study day
+\options{3/28/2013}{\noclassday} % study day
+\options{3/29/2013}{\noclassday} % study day
+\end{calendar}
+\end{center}
+
+
+\end{document}
