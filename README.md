@@ -1,2 +1,3 @@
 # Teaching
-public files from courses I have taught (or am teaching)
+
+A repository of the public files from courses I have taught.
