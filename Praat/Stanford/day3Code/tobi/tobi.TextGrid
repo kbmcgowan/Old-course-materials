@@ -1,0 +1,142 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 6.6197052154195015 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "sentences" 
+        xmin = 0 
+        xmax = 6.6197052154195015 
+        intervals: size = 7 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.10188208616780045 
+            text = "" 
+        intervals [2]:
+            xmin = 0.10188208616780045 
+            xmax = 1.5262590432998593 
+            text = "Marianna made the marmalade." 
+        intervals [3]:
+            xmin = 1.5262590432998593 
+            xmax = 2.475068027210884 
+            text = "" 
+        intervals [4]:
+            xmin = 2.475068027210884 
+            xmax = 3.9509410430839003 
+            text = "Marianna made the marmalade?" 
+        intervals [5]:
+            xmin = 3.9509410430839003 
+            xmax = 4.8608956916099775 
+            text = "" 
+        intervals [6]:
+            xmin = 4.8608956916099775 
+            xmax = 6.474690098261528 
+            text = "*Marianna* made the marmalade." 
+        intervals [7]:
+            xmin = 6.474690098261528 
+            xmax = 6.6197052154195015 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 6.6197052154195015 
+        intervals: size = 16 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.10188208616780045 
+            text = "" 
+        intervals [2]:
+            xmin = 0.10188208616780045 
+            xmax = 0.6136374149659864 
+            text = "Marianna" 
+        intervals [3]:
+            xmin = 0.6136374149659864 
+            xmax = 0.7889689913905942 
+            text = "made" 
+        intervals [4]:
+            xmin = 0.7889689913905942 
+            xmax = 0.9037272292465751 
+            text = "the" 
+        intervals [5]:
+            xmin = 0.9037272292465751 
+            xmax = 1.5262590432998593 
+            text = "marmalade" 
+        intervals [6]:
+            xmin = 1.5262590432998593 
+            xmax = 2.475068027210884 
+            text = "" 
+        intervals [7]:
+            xmin = 2.475068027210884 
+            xmax = 2.964820621581966 
+            text = "Marianna" 
+        intervals [8]:
+            xmin = 2.964820621581966 
+            xmax = 3.1398763632437094 
+            text = "made" 
+        intervals [9]:
+            xmin = 3.1398763632437094 
+            xmax = 3.2923673469387746 
+            text = "the" 
+        intervals [10]:
+            xmin = 3.2923673469387746 
+            xmax = 3.9509410430839003 
+            text = "marmalade" 
+        intervals [11]:
+            xmin = 3.9509410430839003 
+            xmax = 4.8608956916099775 
+            text = "" 
+        intervals [12]:
+            xmin = 4.8608956916099775 
+            xmax = 5.562471321862078 
+            text = "Marianna" 
+        intervals [13]:
+            xmin = 5.562471321862078 
+            xmax = 5.735724111866969 
+            text = "made" 
+        intervals [14]:
+            xmin = 5.735724111866969 
+            xmax = 5.856700680272109 
+            text = "the" 
+        intervals [15]:
+            xmin = 5.856700680272109 
+            xmax = 6.474690098261528 
+            text = "marmalade" 
+        intervals [16]:
+            xmin = 6.474690098261528 
+            xmax = 6.6197052154195015 
+            text = "" 
+    item [3]:
+        class = "TextTier" 
+        name = "accents" 
+        xmin = 0 
+        xmax = 6.6197052154195015 
+        points: size = 8 
+        points [1]:
+            number = 0.2959285497638546 
+            mark = "H*" 
+        points [2]:
+            number = 1.0445543264034587 
+            mark = "H*" 
+        points [3]:
+            number = 1.5262590432998593 
+            mark = "L-L%" 
+        points [4]:
+            number = 2.592928026172301 
+            mark = "L*" 
+        points [5]:
+            number = 3.448326152683296 
+            mark = "L*" 
+        points [6]:
+            number = 3.9509410430839003 
+            mark = "H-H%" 
+        points [7]:
+            number = 5.371252085739957 
+            mark = "H*" 
+        points [8]:
+            number = 6.474690098261528 
+            mark = "L-L%" 

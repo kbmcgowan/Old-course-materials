@@ -1,0 +1,16 @@
+Total duration: 6.62 seconds
+Number of tiers is: 3
+	Tier 1: "sentences"
+		there are 7 intervals.
+	Tier 2: "words"
+		there are 16 intervals.
+	Tier 3: "accents"
+		there are 8 points.
+Total duration: 6.62 seconds
+Number of tiers is: 3
+	Tier 1: "sentences"
+		there are 7 intervals.
+	Tier 2: "words"
+		there are 16 intervals.
+	Tier 3: "accents"
+		there are 8 points.

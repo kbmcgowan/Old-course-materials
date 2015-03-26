@@ -1,0 +1,384 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 128.2118820861678 
+tiers? <exists> 
+size = 4 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "speaker" 
+        xmin = 0 
+        xmax = 128.2118820861678 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 128.2118820861678 
+            text = "speaker1" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "utterances" 
+        xmin = 0 
+        xmax = 128.2118820861678 
+        intervals: size = 41 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.9739724003966193 
+            text = "" 
+        intervals [2]:
+            xmin = 1.9739724003966193 
+            xmax = 3.2045037844156963 
+            text = "fixate cross" 
+        intervals [3]:
+            xmin = 3.2045037844156963 
+            xmax = 4.633027210884354 
+            text = "" 
+        intervals [4]:
+            xmin = 4.633027210884354 
+            xmax = 6.089022675736961 
+            text = "please look at the pictures" 
+        intervals [5]:
+            xmin = 6.089022675736961 
+            xmax = 8.100276967930029 
+            text = "" 
+        intervals [6]:
+            xmin = 8.100276967930029 
+            xmax = 9.687981859410431 
+            text = "duct" 
+        intervals [7]:
+            xmin = 9.687981859410431 
+            xmax = 10.614155129046699 
+            text = "" 
+        intervals [8]:
+            xmin = 10.614155129046699 
+            xmax = 12.585651647528875 
+            text = "least" 
+        intervals [9]:
+            xmin = 12.585651647528875 
+            xmax = 13.42515873015873 
+            text = "" 
+        intervals [10]:
+            xmin = 13.42515873015873 
+            xmax = 15.160850340136054 
+            text = "lease" 
+        intervals [11]:
+            xmin = 15.160850340136054 
+            xmax = 16.01479024943311 
+            text = "" 
+        intervals [12]:
+            xmin = 16.01479024943311 
+            xmax = 17.980832703451753 
+            text = "board" 
+        intervals [13]:
+            xmin = 17.980832703451753 
+            xmax = 18.665104308390024 
+            text = "" 
+        intervals [14]:
+            xmin = 18.665104308390024 
+            xmax = 20.61763038548753 
+            text = "guess" 
+        intervals [15]:
+            xmin = 20.61763038548753 
+            xmax = 23.638287981859413 
+            text = "" 
+        intervals [16]:
+            xmin = 23.638287981859413 
+            xmax = 25.1638636936256 
+            text = "boar" 
+        intervals [17]:
+            xmin = 25.1638636936256 
+            xmax = 26.002803191202844 
+            text = "" 
+        intervals [18]:
+            xmin = 26.002803191202844 
+            xmax = 27.89445200302344 
+            text = "find" 
+        intervals [19]:
+            xmin = 27.89445200302344 
+            xmax = 28.78715419501134 
+            text = "" 
+        intervals [20]:
+            xmin = 28.78715419501134 
+            xmax = 30.61040136054422 
+            text = "miss" 
+        intervals [21]:
+            xmin = 30.61040136054422 
+            xmax = 31.370956160241874 
+            text = "" 
+        intervals [22]:
+            xmin = 31.370956160241874 
+            xmax = 33.181995464852605 
+            text = "tempt" 
+        intervals [23]:
+            xmin = 33.181995464852605 
+            xmax = 34.01554043839758 
+            text = "" 
+        intervals [24]:
+            xmin = 34.01554043839758 
+            xmax = 35.849739229024934 
+            text = "mind" 
+        intervals [25]:
+            xmin = 35.849739229024934 
+            xmax = 35.850300536164205 
+            text = "" 
+        intervals [26]:
+            xmin = 35.850300536164205 
+            xmax = 36.54283068783069 
+            text = "" 
+        intervals [27]:
+            xmin = 36.54283068783069 
+            xmax = 38.54950680272108 
+            text = "mend" 
+        intervals [28]:
+            xmin = 38.54950680272108 
+            xmax = 41.66421930677033 
+            text = "" 
+        intervals [29]:
+            xmin = 41.66421930677033 
+            xmax = 43.53194444444445 
+            text = "mass" 
+        intervals [30]:
+            xmin = 43.53194444444445 
+            xmax = 44.261213151927436 
+            text = "" 
+        intervals [31]:
+            xmin = 44.261213151927436 
+            xmax = 45.984823129251694 
+            text = "wind" 
+        intervals [32]:
+            xmin = 45.984823129251694 
+            xmax = 46.771064785346624 
+            text = "" 
+        intervals [33]:
+            xmin = 46.771064785346624 
+            xmax = 48.59715661244193 
+            text = "band" 
+        intervals [34]:
+            xmin = 48.59715661244193 
+            xmax = 48.598231292517006 
+            text = "" 
+        intervals [35]:
+            xmin = 48.598231292517006 
+            xmax = 49.20178496104047 
+            text = "" 
+        intervals [36]:
+            xmin = 49.20178496104047 
+            xmax = 51.21000089197618 
+            text = "mist" 
+        intervals [37]:
+            xmin = 51.21000089197618 
+            xmax = 51.99210204081632 
+            text = "" 
+        intervals [38]:
+            xmin = 51.99210204081632 
+            xmax = 53.831497470783184 
+            text = "chess" 
+        intervals [39]:
+            xmin = 53.831497470783184 
+            xmax = 54.56092403628118 
+            text = "" 
+        intervals [40]:
+            xmin = 54.56092403628118 
+            xmax = 56.39509070294785 
+            text = "fund" 
+        intervals [41]:
+            xmin = 56.39509070294785 
+            xmax = 128.2118820861678 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "targets" 
+        xmin = 0 
+        xmax = 128.2118820861678 
+        intervals: size = 35 
+        intervals [1]:
+            xmin = 0 
+            xmax = 9.132224489795917 
+            text = "" 
+        intervals [2]:
+            xmin = 9.132224489795917 
+            xmax = 9.357418745275888 
+            text = "duct" 
+        intervals [3]:
+            xmin = 9.357418745275888 
+            xmax = 12.073340136054423 
+            text = "" 
+        intervals [4]:
+            xmin = 12.073340136054423 
+            xmax = 12.424746031746032 
+            text = "least" 
+        intervals [5]:
+            xmin = 12.424746031746032 
+            xmax = 14.56547619047619 
+            text = "" 
+        intervals [6]:
+            xmin = 14.56547619047619 
+            xmax = 15.160850340136054 
+            text = "lease" 
+        intervals [7]:
+            xmin = 15.160850340136054 
+            xmax = 17.418185941043085 
+            text = "" 
+        intervals [8]:
+            xmin = 17.418185941043085 
+            xmax = 17.937010582010586 
+            text = "board" 
+        intervals [9]:
+            xmin = 17.937010582010586 
+            xmax = 19.885498866213155 
+            text = "" 
+        intervals [10]:
+            xmin = 19.885498866213155 
+            xmax = 20.544614512471654 
+            text = "guess" 
+        intervals [11]:
+            xmin = 20.544614512471654 
+            xmax = 24.67560341274662 
+            text = "" 
+        intervals [12]:
+            xmin = 24.67560341274662 
+            xmax = 25.163768848500634 
+            text = "boar" 
+        intervals [13]:
+            xmin = 25.163768848500634 
+            xmax = 27.238471950455192 
+            text = "" 
+        intervals [14]:
+            xmin = 27.238471950455192 
+            xmax = 27.89445200302344 
+            text = "find" 
+        intervals [15]:
+            xmin = 27.89445200302344 
+            xmax = 29.970384896066044 
+            text = "" 
+        intervals [16]:
+            xmin = 29.970384896066044 
+            xmax = 30.549924835952517 
+            text = "miss" 
+        intervals [17]:
+            xmin = 30.549924835952517 
+            xmax = 32.60246212305044 
+            text = "" 
+        intervals [18]:
+            xmin = 32.60246212305044 
+            xmax = 33.16992831418928 
+            text = "tempt" 
+        intervals [19]:
+            xmin = 33.16992831418928 
+            xmax = 35.2224656012872 
+            text = "" 
+        intervals [20]:
+            xmin = 35.2224656012872 
+            xmax = 35.850300536164205 
+            text = "mind" 
+        intervals [21]:
+            xmin = 35.850300536164205 
+            xmax = 37.82054043839758 
+            text = "" 
+        intervals [22]:
+            xmin = 37.82054043839758 
+            xmax = 38.38903174603175 
+            text = "mend" 
+        intervals [23]:
+            xmin = 38.38903174603175 
+            xmax = 42.817244535455124 
+            text = "" 
+        intervals [24]:
+            xmin = 42.817244535455124 
+            xmax = 43.47122131834451 
+            text = "mass" 
+        intervals [25]:
+            xmin = 43.47122131834451 
+            xmax = 45.45906273620559 
+            text = "" 
+        intervals [26]:
+            xmin = 45.45906273620559 
+            xmax = 45.96638775510204 
+            text = "wind" 
+        intervals [27]:
+            xmin = 45.96638775510204 
+            xmax = 48.11369992441421 
+            text = "" 
+        intervals [28]:
+            xmin = 48.11369992441421 
+            xmax = 48.598231292517006 
+            text = "band" 
+        intervals [29]:
+            xmin = 48.598231292517006 
+            xmax = 50.589472789115646 
+            text = "" 
+        intervals [30]:
+            xmin = 50.589472789115646 
+            xmax = 51.14295351473922 
+            text = "mist" 
+        intervals [31]:
+            xmin = 51.14295351473922 
+            xmax = 53.22899092970521 
+            text = "" 
+        intervals [32]:
+            xmin = 53.22899092970521 
+            xmax = 53.81036848072562 
+            text = "chess" 
+        intervals [33]:
+            xmin = 53.81036848072562 
+            xmax = 55.83475623582767 
+            text = "" 
+        intervals [34]:
+            xmin = 55.83475623582767 
+            xmax = 56.36329365079365 
+            text = "fund" 
+        intervals [35]:
+            xmin = 56.36329365079365 
+            xmax = 128.2118820861678 
+            text = "" 
+    item [4]:
+        class = "IntervalTier" 
+        name = "comments" 
+        xmin = 0 
+        xmax = 128.2118820861678 
+        intervals: size = 11 
+        intervals [1]:
+            xmin = 0 
+            xmax = 10.614155129046699 
+            text = "" 
+        intervals [2]:
+            xmin = 10.614155129046699 
+            xmax = 12.585651647528875 
+            text = "very long pause between carrier phrase and target word resulting in an /l/ that is more consistent with utterance or IP-initial timing of the two lingual gestures.  Maybe strange coarticulatory cues alongside phrase-medial stimuli?" 
+        intervals [3]:
+            xmin = 12.585651647528875 
+            xmax = 13.42515873015873 
+            text = "" 
+        intervals [4]:
+            xmin = 13.42515873015873 
+            xmax = 15.160850340136054 
+            text = "again, carrier phrase doesn't work... far too much emphasis on target, do not use." 
+        intervals [5]:
+            xmin = 15.160850340136054 
+            xmax = 21.655079779018667 
+            text = "" 
+        intervals [6]:
+            xmin = 21.655079779018667 
+            xmax = 22.67717616012863 
+            text = "speaker is clearly nervous" 
+        intervals [7]:
+            xmin = 22.67717616012863 
+            xmax = 28.78715419501134 
+            text = "" 
+        intervals [8]:
+            xmin = 28.78715419501134 
+            xmax = 30.61040136054422 
+            text = "very strange articulation of initial [m].  Not usable." 
+        intervals [9]:
+            xmin = 30.61040136054422 
+            xmax = 41.66421930677033 
+            text = "" 
+        intervals [10]:
+            xmin = 41.66421930677033 
+            xmax = 43.53194444444445 
+            text = "again, not usable.  strange emphasis." 
+        intervals [11]:
+            xmin = 43.53194444444445 
+            xmax = 128.2118820861678 
+            text = "" 
